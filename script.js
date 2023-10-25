@@ -18,8 +18,19 @@ function stopTime() {
 
     if(seconds === -1) {
       minutes--;
-      seconds = 59; //А дальше я не знаю что делать
+      seconds = 59; 
     }
-  });
+
+    if (minutes === 0 && seconds === 0) {
+      startButton.textContent = "start";
+      clearInterval(timerId);
+      pomodoroTime.textContent = `25:00`;
+      return pomodoroTime;
+    }
+
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    pomodoroTime.textContent = `${minutes} : ${seconds}`;
+  }, 1000);
 }
 }
